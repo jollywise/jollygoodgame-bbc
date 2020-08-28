@@ -23,7 +23,7 @@ module.exports = {
     library: 'jollygoodgame-bbc',
     libraryTarget: 'umd',
   },
-  stats: 'verbose', // minimal, none, normal, verbose ::: https://webpack.js.org/configuration/stats/
+  stats: 'normal', // minimal, none, normal, verbose ::: https://webpack.js.org/configuration/stats/
   externals: [
     {
       Phaser: { commonjs: 'Phaser', commonjs2: 'Phaser', root: 'Phaser' },
