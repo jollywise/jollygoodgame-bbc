@@ -25,19 +25,8 @@ module.exports = {
   },
   stats: 'verbose', // minimal, none, normal, verbose ::: https://webpack.js.org/configuration/stats/
   externals: {
-    phaser: 'Phaser',
-    webfontloader: {
-      commonjs: 'webfontloader',
-      commonjs2: 'webfontloader',
-      amd: 'webfontloader',
-      root: 'webfontloader',
-    },
-    jollygoodgame: {
-      commonjs: 'jollygoodgame',
-      commonjs2: 'jollygoodgame',
-      amd: 'jollygoodgame',
-      root: 'jollygoodgame',
-    },
+    phaser: { commonjs: 'Phaser', commonjs2: 'Phaser', root: 'Phaser' },
+    webfontloader: { commonjs: 'webfontloader', commonjs2: 'webfontloader', root: 'webfontloader' },
   },
   devtool: process.env.NODE_ENV === 'development' ? 'none' : 'source-map',
   plugins: [],
