@@ -5,21 +5,25 @@ export class StorageBBCPlugin {
   }
 
   get key() {
-    return this._key;
+    return null;
   }
-  set key(val) {
-    this._key = val;
-  }
+  set key(val) {}
 
-  deleteGameData() {
-    try {
-      window.localStorage.removeItem(this.key);
-    } catch (e) {}
+  deleteGameData(saveId) {
+    if (this.gmi) {
+      this.gmi.setGameData(saveId, JSON.stringify({}));
+    } else {
+      console.warn('GMI not available');
+    }
   }
 
   setGameData(saveId, value) {
     const savesString = JSON.stringify(value);
-    this.gmi.setGameData(saveId, savesString);
+    if (this.gmi) {
+      this.gmi.setGameData(saveId, savesString);
+    } else {
+      console.warn('GMI not available');
+    }
   }
 
   getGameData() {
@@ -34,8 +38,13 @@ export class StorageBBCPlugin {
   }
 
   loadData() {
-    const settings = this.gmi && this.gmi.getAllSettings();
-    return settings || {};
+    if (this.gmi) {
+      const settings = this.gmi.getAllSettings();
+      return settings || {};
+    } else {
+      console.warn('GMI not available');
+    }
+    return {};
   }
 
   destroy() {
