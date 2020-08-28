@@ -24,10 +24,25 @@ module.exports = {
     libraryTarget: 'umd',
   },
   stats: 'verbose', // minimal, none, normal, verbose ::: https://webpack.js.org/configuration/stats/
-  externals: {
-    phaser: { commonjs: 'Phaser', commonjs2: 'Phaser', root: 'Phaser' },
-    webfontloader: { commonjs: 'webfontloader', commonjs2: 'webfontloader', root: 'webfontloader' },
-  },
+  externals: [
+    {
+      Phaser: { commonjs: 'Phaser', commonjs2: 'Phaser', root: 'Phaser' },
+      webfontloader: {
+        commonjs: 'webfontloader',
+        commonjs2: 'webfontloader',
+        root: 'webfontloader',
+      },
+    },
+    // Using this to trace out modules : how I discovered I needed Phaser not phaser
+    // https://webpack.js.org/configuration/externals/#function
+    function (context, request, callback) {
+      console.log(context, request);
+      // if (/^Phaser$/.test(request)) {
+      //   return callback(null, 'commonjs ' + request);
+      // }
+      callback();
+    },
+  ],
   devtool: process.env.NODE_ENV === 'development' ? 'none' : 'source-map',
   plugins: [],
 };
