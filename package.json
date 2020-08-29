@@ -84,7 +84,7 @@
     "webpack-dev-server": "^3.11.0",
     "webpack-merge": "^4.2.1"
   },
-  "peerDependencies": {
+  "dependencies": {
     "@jollywise/jollygoodgame": "git+ssh://git@github.com/jollywise/jollygoodgame.git#webpack"
   }
 }
