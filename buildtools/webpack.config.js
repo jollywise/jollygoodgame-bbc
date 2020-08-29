@@ -28,9 +28,9 @@ module.exports = {
     {
       Phaser: { commonjs: 'Phaser', commonjs2: 'Phaser', root: 'Phaser' },
       '@jollywise/jollygoodgame': {
-        commonjs: 'jollygoodgame',
-        commonjs2: 'jollygoodgame',
-        root: 'jollygoodgame',
+        commonjs: '@jollywise/jollygoodgame',
+        commonjs2: '@jollywise/jollygoodgame',
+        root: '@jollywise/jollygoodgame',
       },
       webfontloader: {
         commonjs: 'webfontloader',
