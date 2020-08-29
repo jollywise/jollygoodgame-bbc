@@ -85,6 +85,6 @@
     "webpack-merge": "^4.2.1"
   },
   "dependencies": {
-    "@jollywise/jollygoodgame": "git+ssh://git@github.com/jollywise/jollygoodgame.git#webpack"
+    "@jollywise/jollygoodgame": "git+ssh://git@github.com/jollywise/jollygoodgame.git#master"
   }
 }
