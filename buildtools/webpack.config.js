@@ -27,10 +27,10 @@ module.exports = {
   externals: [
     {
       Phaser: { commonjs: 'Phaser', commonjs2: 'Phaser', root: 'Phaser' },
-      '@jollywise/jollygoodgame': {
-        commonjs: 'jollygoodgame',
-        commonjs2: 'jollygoodgame',
-        root: 'jollygoodgame',
+      '@jollywise/jollygoodgame-base': {
+        commonjs: 'jollygoodgame-base',
+        commonjs2: 'jollygoodgame-base',
+        root: 'jollygoodgame-base',
       },
       webfontloader: {
         commonjs: 'webfontloader',
