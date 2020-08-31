@@ -19,7 +19,6 @@ export class AppBBC extends AppBase {
     /*
      * BBC Settings
      */
-    console.log('GMI Settings', this.gmi.getAllSettings());
     this._settings = new Settings(this.gmi, new SettingsModel(this.gmi.getAllSettings()));
   }
 

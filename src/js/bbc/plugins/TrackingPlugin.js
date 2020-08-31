@@ -23,7 +23,6 @@ export class TrackingPlugin {
 
   addStats(stats) {
     this.stats = stats;
-    console.log('TrackingPlugin.addStats', stats);
   }
 
   // internal
