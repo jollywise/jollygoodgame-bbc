@@ -1,4 +1,4 @@
-export const bootstrapBBC = (isBBC = false, gameDir) => {
+export const bootstrapBBC = ({ isBBC = false, gameDir }) => {
   const promise = new Promise((resolve) => {
     if (isBBC) {
       // In BBC env : Add css to html head
