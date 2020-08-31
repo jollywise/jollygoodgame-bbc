@@ -1,7 +1,6 @@
 export class TrackingPlugin {
-  constructor(gmi, stats, debug = false) {
+  constructor(gmi, debug = false) {
     this.gmi = gmi;
-    this.stats = stats;
     this.debug = debug;
     this.supported = this.isSupported();
   }
@@ -26,6 +25,11 @@ export class TrackingPlugin {
 
   trackGameLoaded() {
     this.track(this.stats.GAME_LOADED, 'true');
+  }
+
+  addStats(stats) {
+    this.stats = stats;
+    console.log('TrackingPlugin.addStats', stats);
   }
 
   // internal

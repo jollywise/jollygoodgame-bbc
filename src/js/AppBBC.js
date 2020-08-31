@@ -1,4 +1,6 @@
-import { AppBase } from '@jollywise/jollygoodgame';
+import { AppBase, getStorage } from '@jollywise/jollygoodgame';
+import { StoragePlugin } from './bbc/plugins/StoragePlugin';
+import { TrackingPlugin } from './bbc/plugins/TrackingPlugin';
 
 export class AppBBC extends AppBase {
   constructor(opts) {
@@ -6,11 +8,20 @@ export class AppBBC extends AppBase {
     const { gmi } = opts;
     this._gmi = gmi;
 
+    // storage test : localstorage
+    // const storage = getStorage('hey-duggee-2');
+    // storage.plugin = new StoragePlugin();
+
+    // BBC Saves via GMI to localstorage
+    const storage = getStorage();
+    storage.plugin = new StoragePlugin(this.gmi);
+    this.saves.storagePlugin = storage;
+
+    // BBC Tracking
+    this.tracking.plugin = new TrackingPlugin(this.gmi, true);
+
     /*
-     * Set up BBC Stats and Settings here
-     *
-     * Will leave this for you Chris :D
-     *
+     * BBC Settings
      */
   }
 
