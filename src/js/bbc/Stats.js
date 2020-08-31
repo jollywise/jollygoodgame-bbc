@@ -6,21 +6,21 @@ export const BBC_STATS_BASE = {
   /**
    * actionTypes
    */
-  GAME_CLICK: 'click',
-  SETTINGS_OPEN: 'open',
-  SETTINGS_CLOSE: 'close',
-  SETTINGS_ON: 'on',
-  SETTINGS_OFF: 'off',
+  TYPE_GAME_CLICK: 'click',
+  TYPE_SETTINGS_OPEN: 'open',
+  TYPE_SETTINGS_CLOSE: 'close',
+  TYPE_SETTINGS_ON: 'on',
+  TYPE_SETTINGS_OFF: 'off',
 
   /**
    * actionNames
    */
-  SETTINGS: 'settings',
-  GAME_LOADED: 'gameloaded',
-  PLAY: 'play',
-  AUDIO: 'audio',         // [on / off]
-  SUBTITLES: 'subtitles', // [on / off]
-  MOTION: 'motion',       // [on / off]
+  NAME_SETTINGS: 'settings',
+  NAME_GAME_LOADED: 'gameloaded',
+  NAME_PLAY: 'play',
+  NAME_AUDIO: 'audio', // [on / off]
+  NAME_SUBTITLES: 'subtitles', // [on / off]
+  NAME_MOTION: 'motion', // [on / off]
 
   /**
    * Page Views
@@ -28,4 +28,4 @@ export const BBC_STATS_BASE = {
   PAGE_HOME: 'home',
   PAGE_SETTINGS: 'settings',
   // extend these as required
-}
+};

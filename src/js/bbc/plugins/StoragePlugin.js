@@ -1,7 +1,7 @@
-export class StorageBBCPlugin {
+export class StoragePlugin {
   constructor(gmi) {
     this.gmi = gmi;
-    return this.isSupported();
+    this.supported = this.isSupported();
   }
 
   get key() {
@@ -32,9 +32,13 @@ export class StorageBBCPlugin {
   }
 
   // internal
-
   isSupported() {
-    return true;
+    if (typeof this.gmi !== 'undefined') {
+      console.log('BBC StoragePlugin registered');
+      return true;
+    }
+    console.warn('BBC TrackingPlugin : GMI not available');
+    return false;
   }
 
   loadData() {
