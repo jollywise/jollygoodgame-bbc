@@ -1,5 +1,5 @@
 {
-  "name": "jollygoodgame-bbc",
+  "name": "@jollywise/jollygoodgame-bbc",
   "version": "1.0.0",
   "description": "",
   "main": "src/js/index.js",
