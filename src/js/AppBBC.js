@@ -1,6 +1,6 @@
 import { AppBase, getStorage } from '@jollywise/jollygoodgame';
-import { StoragePlugin } from './bbc/plugins/StoragePlugin';
-import { TrackingPlugin } from './bbc/plugins/TrackingPlugin';
+import { StoragePlugin, TrackingPlugin } from './bbc/plugins/';
+import { Settings, SettingsModel } from './bbc/settings/';
 
 export class AppBBC extends AppBase {
   constructor(opts) {
@@ -23,6 +23,8 @@ export class AppBBC extends AppBase {
     /*
      * BBC Settings
      */
+    console.log('GMI Settings', this.gmi.getAllSettings());
+    this._settings = new Settings(this.gmi, new SettingsModel(this.gmi.getAllSettings()));
   }
 
   get gmi() {
