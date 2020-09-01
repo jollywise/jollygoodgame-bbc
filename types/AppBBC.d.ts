@@ -1,3 +1,3 @@
-declare class AppBBC {
+export declare class AppBBC {
   constructor(o: any);
 }
