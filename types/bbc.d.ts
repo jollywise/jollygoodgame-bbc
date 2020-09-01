@@ -2,10 +2,10 @@ export const BBC_STATS_BASE;
 export const SETTINGS_EVENTS;
 export const GMI_CONFIG_BASE;
 
-export function bootstrapBBC(o: object);
+export function bootstrapBBC(opts: object);
 
 export class SettingsModel {
-  constructor(o: object);
+  constructor(opts: object);
 }
 
 export class Settings {

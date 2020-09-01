@@ -1,13 +1,11 @@
-import { StorageGame } from '@jollywise/jollygoodgame';
 import { StoragePlugin, TrackingPlugin } from './bbc/plugins';
 import { Settings, SettingsModel } from './bbc/settings';
 
-export const addPlugins = (scope, opts) => {
+export const addPlugins = (scope, opts, storage) => {
   const { gmi } = opts;
   scope.gmi = gmi;
 
   // BBC Saves
-  const storage = new StorageGame('');
   storage.plugin = new StoragePlugin(gmi);
   scope.saves.storage = storage;
 
