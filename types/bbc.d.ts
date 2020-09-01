@@ -6,13 +6,13 @@ export class SettingsModel {
 }
 
 export class Settings {
-  constructor(o: any);
+  constructor(gmi: any, model: any);
 }
 
 export class StoragePlugin {
-  constructor(o: any);
+  constructor(gmi: any);
 }
 
 export class TrackingPlugin {
-  constructor(o: any);
+  constructor(gmi: any, debug: Boolean);
 }
