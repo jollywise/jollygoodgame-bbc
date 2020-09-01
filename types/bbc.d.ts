@@ -1,18 +1,18 @@
-export declare type BBC_STATS_BASE = {};
-export declare type SETTINGS_EVENTS = {};
+export type BBC_STATS_BASE = {};
+export type SETTINGS_EVENTS = {};
 
-export declare class SettingsModel {
+export class SettingsModel {
   constructor(o: any);
 }
 
-export declare class Settings {
+export class Settings {
   constructor(o: any);
 }
 
-export declare class StoragePlugin {
+export class StoragePlugin {
   constructor(o: any);
 }
 
-export declare class TrackingPlugin {
+export class TrackingPlugin {
   constructor(o: any);
 }
