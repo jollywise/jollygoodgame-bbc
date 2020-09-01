@@ -11,8 +11,10 @@ export class Settings {
 
 export class StoragePlugin {
   constructor(gmi: any);
+  key;
 }
 
 export class TrackingPlugin {
   constructor(gmi: any, debug: Boolean);
+  addStats();
 }
