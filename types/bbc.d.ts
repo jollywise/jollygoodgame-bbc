@@ -1,12 +1,15 @@
-export type BBC_STATS_BASE = {};
-export type SETTINGS_EVENTS = {};
+export const BBC_STATS_BASE;
+export const SETTINGS_EVENTS;
+export const GMI_CONFIG_BASE;
+
+export function bootstrapBBC(o: object);
 
 export class SettingsModel {
-  constructor(o: any);
+  constructor(o: object);
 }
 
 export class Settings {
-  constructor(gmi: any, model: any);
+  constructor(gmi: any, model: SettingsModel);
 }
 
 export class StoragePlugin {
@@ -15,6 +18,6 @@ export class StoragePlugin {
 }
 
 export class TrackingPlugin {
-  constructor(gmi: any, debug: Boolean);
+  constructor(gmi: any, debug: boolean);
   addStats();
 }

@@ -1,2 +1,2 @@
-export function addPlugins(scope: any, opts: Object);
+export function addPlugins(scope: any, opts: object);
 
