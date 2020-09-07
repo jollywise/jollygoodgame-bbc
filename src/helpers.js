@@ -1,5 +1,4 @@
-import { StoragePlugin, TrackingPlugin } from './bbc/plugins';
-import { Settings, SettingsModel } from './bbc/settings';
+import { StoragePlugin, TrackingPlugin, SettingsPlugin } from './bbc/plugins';
 
 export const addPlugins = (scope, opts, storage) => {
   const { gmi } = opts;
@@ -12,8 +11,6 @@ export const addPlugins = (scope, opts, storage) => {
   // BBC Tracking
   scope.tracking.plugin = new TrackingPlugin(gmi, true);
 
-  /*
-   * BBC Settings
-   */
-  scope.settings = new Settings(gmi, new SettingsModel(gmi.getAllSettings()));
+  // BBC Settings
+  scope.settings.plugin = new SettingsPlugin(gmi);
 };

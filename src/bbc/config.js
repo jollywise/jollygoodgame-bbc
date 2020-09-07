@@ -19,4 +19,3 @@ export const GMI_CONFIG_BASE = {
     },
   ],
 };
-
