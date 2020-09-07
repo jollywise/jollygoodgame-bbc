@@ -1,5 +1,5 @@
 import EventEmitter from 'eventemitter3';
-import { SETTINGS_EVENTS } from '@jollybase/jollygoodgame';
+import { SETTINGS_EVENTS } from '@jollywise/jollygoodgame';
 
 export class SettingsPlugin extends EventEmitter {
   constructor(gmi) {
