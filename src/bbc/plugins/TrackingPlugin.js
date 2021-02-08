@@ -18,7 +18,9 @@ export class TrackingPlugin {
   }
 
   trackGameLoaded() {
-    this.track(this.stats.GAME_LOADED, 'true');
+    if (this.supported) {
+      this.trackInternal('gameLoaded', 'true');
+    }
   }
 
   addStats(stats) {
