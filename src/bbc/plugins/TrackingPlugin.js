@@ -23,6 +23,12 @@ export class TrackingPlugin {
     }
   }
 
+  trackGameClick(name, params) {
+    if (this.supported) {
+      this.trackInternal(name, 'click', params);
+    }
+  }
+
   addStats(stats) {
     this.stats = stats;
   }
