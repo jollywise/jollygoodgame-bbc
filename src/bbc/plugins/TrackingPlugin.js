@@ -19,13 +19,13 @@ export class TrackingPlugin {
 
   trackGameLoaded() {
     if (this.supported) {
-      this.trackInternal('gameLoaded', 'true');
+      this.trackInternal({ actionName: 'gameLoaded', actionType: 'true' });
     }
   }
 
   trackGameClick(name, params) {
     if (this.supported) {
-      this.trackInternal(name, 'click', params);
+      this.trackInternal({ actionName: name, actionType: 'click', params });
     }
   }
 
@@ -34,7 +34,7 @@ export class TrackingPlugin {
   }
 
   // internal
-  trackInternal(actionName = '', actionType = '', params = {}) {
+  trackInternal({ actionName = '', actionType = '', params = {} }) {
     // params.container = STATS.CONTAINER;
     this.debug && console.log('[STATS] gmi.sendStatsEvent', actionName, actionType, params);
     this.gmi.sendStatsEvent(actionName, actionType, params);
