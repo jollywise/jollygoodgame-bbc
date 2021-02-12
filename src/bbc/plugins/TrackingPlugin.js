@@ -2,6 +2,7 @@ export class TrackingPlugin {
   constructor(gmi, debug = false) {
     this.gmi = gmi;
     this.debug = debug;
+    this.stats = {};
     this.supported = this.isSupported();
   }
 
@@ -46,7 +47,7 @@ export class TrackingPlugin {
   }
 
   isSupported() {
-    if (typeof this.gmi !== 'undefined') {
+    if (typeof this.gmi !== 'undefined' && this.gmi !== null) {
       console.log('BBC TrackingPlugin registered');
       return true;
     }
@@ -55,7 +56,7 @@ export class TrackingPlugin {
   }
 
   destroy() {
-    this.gmi = '';
-    this.stats = null;
+    this.gmi = null;
+    this.stats = {};
   }
 }
