@@ -12,6 +12,7 @@ export class TrackingPlugin {
     }
   }
 
+
   setPage(opts) {
     if (this.supported) {
       this.setPageInternal(opts);
@@ -20,13 +21,13 @@ export class TrackingPlugin {
 
   trackGameLoaded() {
     if (this.supported) {
-      this.trackInternal({ actionName: 'gameLoaded', actionType: 'true' });
+      this.trackInternal(this.stats.NAME_GAME_LOADED, 'true');
     }
   }
 
   trackGameClick(name, params) {
     if (this.supported) {
-      this.trackInternal({ actionName: name, actionType: 'click', params });
+      this.trackInternal(name, 'click', params);
     }
   }
 
@@ -35,7 +36,7 @@ export class TrackingPlugin {
   }
 
   // internal
-  trackInternal({ actionName = '', actionType = '', params = {} }) {
+  trackInternal(actionName = '', actionType = '', params = {}) {
     // params.container = STATS.CONTAINER;
     this.debug && console.log('[STATS] gmi.sendStatsEvent', actionName, actionType, params);
     this.gmi.sendStatsEvent(actionName, actionType, params);
@@ -47,7 +48,7 @@ export class TrackingPlugin {
   }
 
   isSupported() {
-    if (typeof this.gmi !== 'undefined' && this.gmi !== null) {
+    if (typeof this.gmi !== 'undefined') {
       console.log('BBC TrackingPlugin registered');
       return true;
     }
@@ -56,7 +57,7 @@ export class TrackingPlugin {
   }
 
   destroy() {
-    this.gmi = null;
-    this.stats = {};
+    this.gmi = '';
+    this.stats = null;
   }
 }
