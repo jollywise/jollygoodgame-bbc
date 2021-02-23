@@ -6,12 +6,11 @@ export class TrackingPlugin {
     this.supported = this.isSupported();
   }
 
-  track(opts) {
+  track({ actionName = '', actionType = '', params = {} }) {
     if (this.supported) {
-      this.trackInternal(opts);
+      this.trackInternal(actionName, actionType, params);
     }
   }
-
 
   setPage(opts) {
     if (this.supported) {
@@ -38,7 +37,7 @@ export class TrackingPlugin {
   // internal
   trackInternal(actionName = '', actionType = '', params = {}) {
     // params.container = STATS.CONTAINER;
-    this.debug && console.log('[STATS] gmi.sendStatsEvent', actionName, actionType, params);
+    this.debug && console.log('[STATS] gmi.sendStatsEvent', actionName);
     this.gmi.sendStatsEvent(actionName, actionType, params);
   }
 
