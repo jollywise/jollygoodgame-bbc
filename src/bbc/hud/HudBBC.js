@@ -1,5 +1,6 @@
-import { Hud, ButtonSound } from '@jollywise/jollygoodgame';
+import { Hud } from '@jollywise/jollygoodgame';
 import { ButtonBBC } from '@jollywise/jollygoodgame-bbc/src/bbc/hud/ButtonBBC';
+import { ButtonSoundBBC } from '@jollywise/jollygoodgame-bbc/src/bbc/hud/ButtonSoundBBC';
 
 export default class HudBBC extends Hud {
   createStateButton(config, overwrite = false) {
@@ -17,7 +18,7 @@ export default class HudBBC extends Hud {
     let btn;
     switch (config.id) {
       case 'btn_sound':
-        btn = new ButtonSound(this, config);
+        btn = new ButtonSoundBBC(this, config);
         break;
       default:
         btn = new ButtonBBC(this, config);
