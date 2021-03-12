@@ -36,6 +36,7 @@ function buildConfig(target, buildtype, minimize) {
     __WATCH__: JSON.stringify(project.environmentVars.watch),
     __SHORTCUTS_ENABLED__: JSON.stringify(project.environmentVars.shortcuts),
     __ENV_IS_BBC__: JSON.stringify(project.environmentVars.isBBC),
+    __VERSION__: JSON.stringify(process.env.npm_package_version),
   };
 
   console.log('[WEBPACK] Building', target, buildtype, ' | minimize = ', minimize);
