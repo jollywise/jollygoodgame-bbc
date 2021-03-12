@@ -1,6 +1,6 @@
 const path = require('path');
 const CONTENT_BASE = 'src';
-const TEMPLATES = path.resolve(__dirname, '../../templates/local');
+const TEMPLATES = path.resolve(__dirname, '../../../templates/local');
 const projectRoot = path.resolve(__dirname, '../../../../'); // used in jollyapps to target correct folders
 const root = path.resolve('.');
 const dist = path.join(projectRoot, 'output/');
