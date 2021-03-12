@@ -16,7 +16,7 @@ const PATHS = {
   nodeDir,
   src,
   libsDir,
-  templateDir: path.join(root, TEMPLATES),
+  templateDir: TEMPLATES,
   fonts: 'css/fonts/[name].[ext]',
   images: 'images/[name].[ext]',
   entryFile: src + '/js/main.js',
