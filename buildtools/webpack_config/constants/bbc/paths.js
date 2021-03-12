@@ -20,7 +20,7 @@ const PATHS = {
   entryFile: src + '/js/main.js',
   contentBase: CONTENT_BASE,
   htmlOutPath: htmlOutPath,
-  htmlOutName: 'game.html',
+  htmlOutName: 'index.html',
   cssOut: 'css/',
   jsOut: '',
 };
