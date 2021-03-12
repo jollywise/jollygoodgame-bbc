@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "build:bbc": "cross-env NODE_ENV=production webpack --config ./buildtools/webpack.config.js --env.target=bbc --env.buildtype=dist --env.minimize=true"
+  },
+  "eslintConfig": {
+    "globals": {
+      "__ENV_IS_BBC__": false
+    }
+  }
+}
