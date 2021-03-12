@@ -3,7 +3,7 @@ const DEVSERVER_PORT = 3000;
 const BROWSERSYNC_PORT = 4000;
 
 const PROJECT = {
-  title: 'JollyGoodGame-BBC',
+  title: '',
   devserverHost: DEVSERVER_HOST,
   devserverPort: DEVSERVER_PORT,
   devserverURL: `http://${DEVSERVER_HOST}:${DEVSERVER_PORT}`,

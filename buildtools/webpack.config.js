@@ -18,15 +18,7 @@ function buildConfig(target, buildtype, minimize, title, statsCounterName, gameI
     __ENV_IS_BBC__: JSON.stringify(project.environmentVars.isBBC),
   };
 
-  console.log(
-    '[WEBPACK] Building',
-    target,
-    buildtype,
-    'to',
-    paths.projectRoot,
-    ' | minimize = ',
-    minimize
-  );
+  console.log('[WEBPACK] Building', target, buildtype, ' | minimize = ', minimize);
 
   const configPath = path.resolve(__dirname, `webpack_config/${buildtype}.js`);
   const config = require(configPath)({
