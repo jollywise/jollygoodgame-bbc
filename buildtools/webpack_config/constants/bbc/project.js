@@ -2,7 +2,7 @@ const PROJECT = {
   title: '',
   manifestName: 'webpackmanifest',
   vendorName: 'vendor',
-  generateHTML: false,
+  generateHTML: true,
   generateSourcemaps: false,
   isHashed: false,
   dropConsole: false,
