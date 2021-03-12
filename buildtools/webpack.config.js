@@ -1,14 +1,34 @@
 'use strict';
 
 const path = require('path');
+const { cosmiconfigSync } = require('cosmiconfig');
 
-function buildConfig(target, buildtype, minimize, title, statsCounterName, gameId) {
+const cosmiconfig = cosmiconfigSync('webpackBuild').search();
+const config = cosmiconfig ? cosmiconfig.config || {} : {};
+
+const DEVSERVER_HOST = 'localhost';
+const DEVSERVER_PORT = 3000;
+const BROWSERSYNC_PORT = 4000;
+
+function buildConfig(target, buildtype, minimize) {
   const constantsPath = path.resolve(__dirname, `webpack_config/constants/${target}/`);
   const paths = require(`${constantsPath}/paths`);
   const project = require(`${constantsPath}/project`);
-  project.title = title;
-  project.statsCounterName = statsCounterName;
-  project.gameId = gameId;
+
+  project.title = config.title || 'JollyGoodGame-BBC';
+  project.statsCounterName = config.statsCounterName || '';
+  project.gameId = config.gameId || 'test-game';
+  project.devserverHost = config.devServer
+    ? config.devServer.host || DEVSERVER_HOST
+    : DEVSERVER_HOST;
+  project.devserverPort = config.devServer
+    ? config.devServer.port || DEVSERVER_PORT
+    : DEVSERVER_PORT;
+  project.browserSyncPort = config.devServer
+    ? config.devServer.browserSyncPort || BROWSERSYNC_PORT
+    : BROWSERSYNC_PORT;
+  project.devserverURL = `http://${project.devserverHost}:${project.devserverPort}`;
+  project.devServer = `webpack-dev-server/client?${project.devserverURL}`;
 
   const environmentVars = {
     __DEBUG__: JSON.stringify(project.environmentVars.debug),
@@ -21,22 +41,15 @@ function buildConfig(target, buildtype, minimize, title, statsCounterName, gameI
   console.log('[WEBPACK] Building', target, buildtype, ' | minimize = ', minimize);
 
   const configPath = path.resolve(__dirname, `webpack_config/${buildtype}.js`);
-  const config = require(configPath)({
+  const result = require(configPath)({
     paths,
     project,
     environmentVars,
     minimize,
   });
-  return config;
+  return result;
 }
 
-module.exports = function ({
-  target = '',
-  buildtype = '',
-  minimize = 'true',
-  title = 'JollyGoodGame-BBC',
-  statsCounterName = 'test',
-  gameId = 'test-game',
-}) {
-  return buildConfig(target, buildtype, minimize === 'true', title, statsCounterName, gameId);
+module.exports = function ({ target = '', buildtype = '', minimize = 'true' }) {
+  return buildConfig(target, buildtype, minimize === 'true');
 };
