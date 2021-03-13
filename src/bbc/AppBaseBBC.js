@@ -1,4 +1,6 @@
-import { AppBase } from '@jollywise/jollygoodgame';
+import { AppBase, StorageGame } from '@jollywise/jollygoodgame';
+import { TrackingPlugin } from './plugins/TrackingPlugin';
+import { StoragePlugin } from './plugins/StoragePlugin';
 
 export default class AppBaseBBC extends AppBase {
   constructor(opts) {
@@ -14,15 +16,5 @@ export default class AppBaseBBC extends AppBase {
 
     // BBC Tracking
     this.tracking.plugin = new TrackingPlugin(opts.gmi, true);
-
-    // BBC Settings
-    this._settings = new Settings({ game: this });
-    this._settings.plugin = new SettingsPlugin(opts.gmi);
-
-    this.controller = new GameController({
-      game: this,
-    });
-
-    this.tracking.plugin.addStats(STATS); // add project specific stats to tracking plugin
   }
 }
