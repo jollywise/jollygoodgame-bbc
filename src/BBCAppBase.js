@@ -1,9 +1,15 @@
-import { AppBase, StorageGame } from '@jollywise/jollygoodgame';
-import { TrackingPlugin } from './bbc/plugins/TrackingPlugin';
+import { AppBase, StorageGame, ComponentManager } from '@jollywise/jollygoodgame';
+import { ComponentConfig } from './bbc/components/ComponentConfig';
+import { ComponentMap } from './bbc/components/ComponentMap';
 import { StoragePlugin } from './bbc/plugins/StoragePlugin';
 
-export default class BBCAppBase extends AppBase {
+export class BBCAppBase extends AppBase {
   constructor(opts) {
+    opts.components = {
+      ...ComponentConfig,
+      ...opts.components,
+    };
+    opts.componentMap = ComponentManager.MergeComponentMaps(ComponentMap, opts.componentMap || {});
     super(opts);
 
     // base url
@@ -13,8 +19,5 @@ export default class BBCAppBase extends AppBase {
     const storage = new StorageGame('');
     storage.plugin = new StoragePlugin(opts.gmi);
     this.saves.storage = storage;
-
-    // BBC Tracking
-    this.tracking.plugin = new TrackingPlugin(opts.gmi, true);
   }
 }

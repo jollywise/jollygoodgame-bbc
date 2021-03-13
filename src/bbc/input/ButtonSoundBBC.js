@@ -1,5 +1,5 @@
 import { SETTINGS_EVENTS } from '@jollywise/jollygoodgame';
-import { ButtonBBC } from '@jollywise/jollygoodgame-bbc/src/bbc/hud/ButtonBBC';
+import { ButtonBBC } from './ButtonBBC';
 
 const ON = '_on';
 const OFF = '_off';
