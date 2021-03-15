@@ -12,5 +12,5 @@ export const addPlugins = (scope, opts, storage) => {
   scope.tracking.plugin = new TrackingPlugin(gmi, true);
 
   // BBC Settings
-  scope.settings.plugin = new SettingsPlugin(gmi);
+  scope.settings.plugin = new SettingsPlugin({ game: scope, gmi: opts.gmi });
 };
