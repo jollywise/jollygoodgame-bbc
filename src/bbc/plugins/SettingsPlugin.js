@@ -1,35 +1,41 @@
-import EventEmitter from 'eventemitter3';
-import { SETTINGS_EVENTS } from '@jollywise/jollygoodgame';
+import { SETTINGS_EVENTS, SettingsBase } from '@jollywise/jollygoodgame';
 
-export class SettingsPlugin extends EventEmitter {
+export class SettingsPlugin extends SettingsBase {
   constructor(gmi) {
     super();
     this.gmi = gmi;
     this.supported = this.isSupported();
   }
 
+  get audio() {
+    return this.gmi.getAllSettings().audio;
+  }
+
+  get motion() {
+    return this.gmi.getAllSettings().motion;
+  }
+
+  get captions() {
+    return this.gmi.getAllSettings().subtitles;
+  }
+
   set audio(audio) {
-    if (this.supported) {
-      this.gmi.setAudio(audio); // GMI save
-    }
+    this.gmi.setAudio(audio);
+    this.emit(SETTINGS_EVENTS.CHANGED);
+    this.emit(SETTINGS_EVENTS.AUDIO_CHANGED);
   }
 
   set motion(motion) {
-    if (this.supported) {
-      this.gmi.setMotion(motion); // GMI save
-    }
+    this.gmi.setMotion(motion);
+    this.emit(SETTINGS_EVENTS.CHANGED);
   }
 
   set captions(captions) {
-    if (this.supported) {
-      this.gmi.setSubtitles(captions); // GMI save
-    }
+    this.gmi.setSubtitles(captions);
+    this.emit(SETTINGS_EVENTS.CHANGED);
   }
 
   showSettings() {
-    if (!this.supported) {
-      return false;
-    }
     return this.gmi.showSettings(
       this.onSettingChanged.bind(this),
       this.onSettingsClosed.bind(this)
@@ -39,13 +45,13 @@ export class SettingsPlugin extends EventEmitter {
   onSettingChanged(key, value) {
     switch (key) {
       case 'audio':
-        this.emit(SETTINGS_EVENTS.CHANGED, { key, value });
+        this.audio = value;
         break;
       case 'motion':
-        this.emit(SETTINGS_EVENTS.CHANGED, { key, value });
+        this.motion = value;
         break;
       case 'subtitles':
-        this.emit(SETTINGS_EVENTS.CHANGED, { key: 'captions', value });
+        this.captions = value;
         break;
     }
   }
