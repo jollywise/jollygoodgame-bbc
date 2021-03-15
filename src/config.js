@@ -8,8 +8,8 @@ export const getConfigBBC = (opts) => {
   return conf;
 };
 
-export const getGmiConfig = () => {
-  gmiConfig = {
+export const getConfigGMI = () => {
+  return {
     pages: [
       {
         title: 'Game Settings',
