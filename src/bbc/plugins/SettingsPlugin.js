@@ -1,9 +1,9 @@
 import { SETTINGS_EVENTS, SettingsBase } from '@jollywise/jollygoodgame';
 
 export class SettingsPlugin extends SettingsBase {
-  constructor(gmi) {
-    super();
-    this.gmi = gmi;
+  constructor(opts) {
+    super(opts);
+    this.gmi = opts.gmi;
     this.supported = this.isSupported();
   }
 
