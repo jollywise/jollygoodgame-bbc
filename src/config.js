@@ -1,7 +1,20 @@
 import { getConfigBase } from '@jollywise/jollygoodgame';
+import { VibratePlugin, SubtitlesPlugin } from '@jollywise/jollygoodgame/src/plugins';
 
 export const getConfigBBC = (opts) => {
   const conf = getConfigBase(opts);
+  conf.plugins.scene.push({
+    key: 'VibratePlugin',
+    plugin: VibratePlugin,
+    mapping: 'vibrate',
+    start: true,
+  });
+  conf.plugins.global.push({
+    key: 'SubtitlesPlugin',
+    plugin: SubtitlesPlugin,
+    mapping: 'subtitles',
+    start: true,
+  });
   if (opts.gmi && opts.gmi.gameContainerId) {
     opts.parent = opts.gmi.gameContainerId;
   }
