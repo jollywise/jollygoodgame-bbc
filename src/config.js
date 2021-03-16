@@ -1,10 +1,16 @@
-import { getConfigBase } from '@jollywise/jollygoodgame';
+import { getConfigBase, GameHudPlugin } from '@jollywise/jollygoodgame';
+import { SettingsPluginBBC } from '@jollywise/jollygoodgame-bbc/src/bbc/components/settings/SetiingsPluginBBC';
+import { TrackingPlugin } from '@jollywise/jollygoodgame-bbc/src/bbc/components/tracking/TrackingPlugin';
 
 export const getConfigBBC = (opts) => {
   const conf = getConfigBase(opts);
   if (opts.gmi && opts.gmi.gameContainerId) {
     opts.parent = opts.gmi.gameContainerId;
   }
+  // add additional AppBase components
+  conf.components.hud = GameHudPlugin;
+  conf.components.tracking = TrackingPlugin;
+  conf.components.settings = { component: SettingsPluginBBC, data: { gmi: opts.gmi } };
   return conf;
 };
 

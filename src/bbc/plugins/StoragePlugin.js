@@ -2,6 +2,8 @@ export class StoragePlugin {
   constructor(gmi) {
     this.gmi = gmi;
     this.supported = this.isSupported();
+
+    console.log('STORAGE PGDKJHKJ');
   }
 
   get key() {
