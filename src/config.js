@@ -16,7 +16,7 @@ export const getConfigBBC = (opts) => {
     start: true,
   });
   if (opts.gmi && opts.gmi.gameContainerId) {
-    opts.parent = opts.gmi.gameContainerId;
+    conf.parent = opts.gmi.gameContainerId;
   }
   return conf;
 };
