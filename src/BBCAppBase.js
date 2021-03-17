@@ -9,6 +9,6 @@ export class BBCAppBase extends AppBase {
     this.gmi = opts.gmi;
 
     // BBC Saves
-    this.saves.storagePlugin = new StoragePlugin(opts.gmi);
+    // this.saves.storagePlugin = new StoragePlugin(opts.gmi);
   }
 }
