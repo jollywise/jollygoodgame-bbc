@@ -4,11 +4,11 @@ import { SettingsBase } from '@jollywise/jollygoodgame/src/settings/SettingsBase
 export class SettingsBaseBBC extends SettingsBase {
   constructor({ game, defaultmodel }) {
     super({ game });
-    const gmisettings = game.gmi.getAllSettings ? game.gmi.getAllSettings() : false;
+    const gmisettings = __ENV_IS_BBC__ ? game.gmi.getAllSettings() : false;
     this.game = game;
     this.model = { ...gmisettings } || defaultmodel || new SettingsModel();
     if (!gmisettings) {
-      const stored = this.localStorage.getItem('jggsettings');
+      const stored = localStorage.getItem('jggsettings');
       if (stored) {
         this.model = { ...this.model, ...JSON.parse(stored) };
       }
@@ -82,7 +82,9 @@ export class SettingsBaseBBC extends SettingsBase {
   }
 
   getSetting(key) {
+    console.log('getSetting', this.gmi)
     if (this.gmi) {
+      console.log('getSetting', key)
       switch (key) {
         case 'audio':
           this.gmi.getAudio();
@@ -118,7 +120,7 @@ export class SettingsBaseBBC extends SettingsBase {
           break;
       }
     } else {
-      this.localStorage.setItem('jggsettings', JSON.stringify(this.model));
+      localStorage.setItem('jggsettings', JSON.stringify(this.model));
     }
     this.emit(SETTINGS_EVENTS.CHANGED, { key, value });
   }
