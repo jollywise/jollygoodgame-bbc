@@ -49,7 +49,7 @@ export class SettingsBaseBBC extends SettingsBase {
   }
 
   get captions() {
-    return this.audio;
+    return this.model.subtitles || this.model.captions;
   }
 
   set audio(audio) {
