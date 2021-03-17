@@ -98,7 +98,7 @@
     "webpack-merge": "^4.2.1"
   },
   "dependencies": {
-    "@jollywise/jollygoodgame": "git://github.com/jollywise/jollygoodgame.git#plugin-system"
+    "@jollywise/jollygoodgame": "git://github.com/jollywise/jollygoodgame.git#2-0"
   },
   "prettier": {
     "printWidth": 100,
