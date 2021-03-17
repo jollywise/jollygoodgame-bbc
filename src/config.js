@@ -12,18 +12,6 @@ export const getConfigBBC = (opts) => {
   // merge option components and pass through with options
   opts.components = opts.components ? { ...BBC_COMPONENTS, ...opts.components } : BBC_COMPONENTS;
   const conf = getConfigBase(opts);
-  conf.plugins.scene.push({
-    key: 'VibratePlugin',
-    plugin: VibratePlugin,
-    mapping: 'vibrate',
-    start: true,
-  });
-  conf.plugins.global.push({
-    key: 'SubtitlesPlugin',
-    plugin: SubtitlesPlugin,
-    mapping: 'subtitles',
-    start: true,
-  });
   if (opts.gmi && opts.gmi.gameContainerId) {
     conf.parent = opts.gmi.gameContainerId;
   }
