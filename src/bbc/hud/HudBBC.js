@@ -47,7 +47,7 @@ export default class HudBBC extends Hud {
   }
 
   setState(hudid, save = true){
-    super.setState(hudid, save = true);
+    super.setState(hudid, save);
     this.setSettingsIcons();
   }
 
@@ -58,6 +58,9 @@ export default class HudBBC extends Hud {
 
 
   setSettingsIcons(){
+
+    if(!this._hudConfig || !this._hudConfig.settings_icons)return;
+    
     if(!this.settingsIcons){
       const icons= this._hudConfig.settings_icons
       if(icons){
