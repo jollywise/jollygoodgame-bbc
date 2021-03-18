@@ -58,6 +58,9 @@ export default class HudBBC extends Hud {
 
 
   setSettingsIcons(){
+
+    if(!this._hudConfig || !this._hudConfig.settings_icons)return;
+    
     if(!this.settingsIcons){
       const icons= this._hudConfig.settings_icons
       if(icons){
