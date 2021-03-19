@@ -1,12 +1,18 @@
 import { SETTINGS_EVENTS, SettingsModel } from '@jollywise/jollygoodgame';
 import { SettingsBase } from '@jollywise/jollygoodgame/src/settings/SettingsBase';
 
+const model = {
+  audio : true, 
+  motion : true,
+  subtitles : false
+}
+
 export class SettingsBaseBBC extends SettingsBase {
-  constructor({ game, defaultmodel }) {
+  constructor({ game }) {
     super({ game });
     const gmisettings = __ENV_IS_BBC__ ? game.gmi.getAllSettings() : false;
     this.game = game;
-    this.model = { ...gmisettings } || defaultmodel || new SettingsModel();
+    this.model = gmisettings ?  { ...gmisettings } || {...model} : {...model};
     if (!gmisettings) {
       const stored = localStorage.getItem('jggsettings');
       if (stored) {
