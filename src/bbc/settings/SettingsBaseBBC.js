@@ -88,19 +88,13 @@ export class SettingsBaseBBC extends SettingsBase {
   }
 
   getSetting(key) {
-    console.log('getSetting', this.gmi)
     if (this.gmi) {
-      console.log('getSetting', key)
       switch (key) {
         case 'audio':
-          this.gmi.getAudio();
-          break;
         case 'motion':
-          this.gmi.getMotion(value);
-          break;
         case 'subtitles':
-          this.gmi.getSubtitles(value);
-          break;
+          this.gmi.getAllSettings()[key];
+        break;
         default:
           return this.gmi.getAllSettings().gameData[key];
       }
