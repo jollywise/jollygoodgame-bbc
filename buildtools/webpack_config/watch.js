@@ -1,9 +1,8 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
-const path = require('path');
 const { findJGGFile } = require('../../../jollygoodgame/buildtools/jgg-libs');
 
-const { main, optimise, rules, plugins } = require(findJGGFile(
+const { server, main, optimise, rules, plugins } = require(findJGGFile(
   'buildtools/webpack_config/config/index.js'
 ));
 
