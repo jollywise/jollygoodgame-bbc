@@ -2,6 +2,7 @@
 
 const path = require('path');
 const { cosmiconfigSync } = require('cosmiconfig');
+const { findJGGFile } = require('./jgg-libs');
 
 const cosmiconfig = cosmiconfigSync('webpackBuild').search();
 const config = cosmiconfig ? cosmiconfig.config || {} : {};
@@ -11,7 +12,7 @@ const DEVSERVER_PORT = 3000;
 const BROWSERSYNC_PORT = 4000;
 
 function buildConfig(target, buildtype, minimize) {
-  const constantsPath = path.resolve(__dirname, `webpack_config/constants/${target}/`);
+  const constantsPath = findJGGFile(__dirname, `buildtools/webpack_config/constants/${target}/`);
   const paths = require(`${constantsPath}/paths`);
   const project = require(`${constantsPath}/project`);
 
@@ -41,7 +42,7 @@ function buildConfig(target, buildtype, minimize) {
 
   console.log('[WEBPACK] Building', target, buildtype, ' | minimize = ', minimize);
 
-  const configPath = path.resolve(__dirname, `webpack_config/${buildtype}.js`);
+  const configPath = findJGGFile(`buildtools/webpack_config/${buildtype}.js`);
   const result = require(configPath)({
     paths,
     project,

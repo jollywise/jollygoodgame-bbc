@@ -1,6 +1,7 @@
 const path = require('path');
+const { findJGGFile } = require('../../../jgg-libs');
 const CONTENT_BASE = 'src';
-const TEMPLATES = path.resolve(__dirname, '../../../templates/local');
+const TEMPLATES = findJGGFile('buildtools/templates/local');
 const root = path.resolve('.');
 const dist = path.join(root, 'output/');
 const htmlOutPath = path.join(root, 'output/');
