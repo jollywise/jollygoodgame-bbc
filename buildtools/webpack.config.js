@@ -2,7 +2,7 @@
 
 const path = require('path');
 const { cosmiconfigSync } = require('cosmiconfig');
-const { findJGGFile } = require('./jgg-libs');
+const { findJGGFile } = require('../../jollygoodgame/buildtools/jgg-libs');
 
 const cosmiconfig = cosmiconfigSync('webpackBuild').search();
 const config = cosmiconfig ? cosmiconfig.config || {} : {};

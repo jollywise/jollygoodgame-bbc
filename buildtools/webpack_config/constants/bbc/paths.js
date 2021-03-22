@@ -1,5 +1,5 @@
 const path = require('path');
-const { findJGGFile } = require('../../../jgg-libs');
+const { findJGGFile } = require('../../../../../jollygoodgame/buildtools/jgg-libs');
 const CONTENT_BASE = 'src';
 const TEMPLATES = findJGGFile('buildtools/templates/local');
 const root = path.resolve('.');
