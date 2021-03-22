@@ -1,6 +1,11 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
-const { server, main, optimise, rules, plugins } = require('./config/index');
+const path = require('path');
+const { findJGGFile } = require('../jgg-libs');
+
+const { main, optimise, rules, plugins } = require(findJGGFile(
+  'buildtools/webpack_config/config/index.js'
+));
 
 module.exports = ({ paths, project, environmentVars, minimize }) => {
   const PATHS = paths;
