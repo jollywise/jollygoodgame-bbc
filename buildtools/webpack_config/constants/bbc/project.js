@@ -8,11 +8,11 @@ const PROJECT = {
   dropConsole: false,
   isVendorChunked: false,
   environmentVars: {
-    isBBC: true,
     debug: false,
     debugBounds: false,
     watch: false,
     shortcuts: true,
+    env: 'bbc',
   },
   containerId: 'game-holder',
 };

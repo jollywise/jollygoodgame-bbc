@@ -2,7 +2,7 @@ import { SETTINGS_EVENTS, SettingsModel } from '@jollywise/jollygoodgame';
 import { SettingsBase } from '@jollywise/jollygoodgame/src/settings/SettingsBase';
 
 const model = {
-  audio : true, 
+  audio : true,
   motion : true,
   subtitles : false
 }
@@ -10,7 +10,7 @@ const model = {
 export class SettingsBaseBBC extends SettingsBase {
   constructor({ game }) {
     super({ game });
-    const gmisettings = __ENV_IS_BBC__ ? game.gmi.getAllSettings() : false;
+    const gmisettings = __ENV__ === 'bbc' ? game.gmi.getAllSettings() : false;
     this.game = game;
     this.model = gmisettings ?  { ...gmisettings } || {...model} : {...model};
     if (!gmisettings) {

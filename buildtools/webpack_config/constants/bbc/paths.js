@@ -1,7 +1,6 @@
 const path = require('path');
-const { findJGGFile } = require('../../../../../jollygoodgame/buildtools/jgg-libs');
 const CONTENT_BASE = 'src';
-const TEMPLATES = findJGGFile('buildtools/templates/local');
+const TEMPLATES = path.resolve(__dirname, '../../../templates/bbc');
 const root = path.resolve('.');
 const dist = path.join(root, 'output/');
 const htmlOutPath = path.join(root, 'output/');
