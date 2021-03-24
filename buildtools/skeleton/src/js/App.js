@@ -1,4 +1,4 @@
-import { BBCAppBase } from '@jollywise/jollygoodgame-bbc';
+import BBCAppBase from '@jollywise/jollygoodgame-bbc/src/BBCAppBase';
 import GameController from 'game/controller/GameController';
 
 export default class App extends BBCAppBase {
