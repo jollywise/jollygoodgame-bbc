@@ -69,9 +69,12 @@ class SettingsPluginBBC extends SettingsPlugin {
 
   showSettings() {
     if (this.gmi) {
-      this.gmi.showSettings(this.onSettingChanged.bind(this), this.onSettingsClosed.bind(this));
+      return this.gmi.showSettings(
+        this.onSettingChanged.bind(this),
+        this.onSettingsClosed.bind(this)
+      );
     } else {
-      super.showSettings();
+      return super.showSettings();
     }
   }
 
