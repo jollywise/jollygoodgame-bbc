@@ -2,8 +2,6 @@ import { SETTINGS_EVENTS } from '@jollywise/jollygoodgame';
 import { SettingsPlugin } from '@jollywise/jollygoodgame/src/components';
 
 class SettingsPluginBBC extends SettingsPlugin {
-  init() {}
-
   get gmi() {
     return this.game.gmi && this.game.gmi.getAllSettings ? this.game.gmi : false;
   }
@@ -30,9 +28,9 @@ class SettingsPluginBBC extends SettingsPlugin {
   getSettingValue(settingid) {
     if (this.gmi) {
       if (settingid === 'captions') settingid = 'subtitles';
-      this.gmi.getAllSettings()[settingid];
+      return this.gmi.getAllSettings()[settingid];
     } else {
-      super.getSettingValue(settingid);
+      return super.getSettingValue(settingid);
     }
   }
 
@@ -69,12 +67,9 @@ class SettingsPluginBBC extends SettingsPlugin {
 
   showSettings() {
     if (this.gmi) {
-      return this.gmi.showSettings(
-        this.onSettingChanged.bind(this),
-        this.onSettingsClosed.bind(this)
-      );
+      this.gmi.showSettings(this.onSettingChanged.bind(this), this.onSettingsClosed.bind(this));
     } else {
-      return super.showSettings();
+      super.showSettings();
     }
   }
 
@@ -87,23 +82,23 @@ class SettingsPluginBBC extends SettingsPlugin {
     this.events.emit(SETTINGS_EVENTS.CLOSED);
   }
 
-  closeSettings() {}
-  _saveSettings() {}
-  _loadSettings() {}
+  closeSettings() {
+    if (!this.gmi) {
+      super.closeSettings();
+    }
+  }
+
+  _saveSettings() {
+    if (!this.gmi) {
+      super._saveSettings();
+    }
+  }
+
+  _loadSettings() {
+    if (!this.gmi) {
+      super._loadSettings();
+    }
+  }
 }
 
 export { SettingsPluginBBC };
-
-const GMIStub = {
-  getAudio: () => {
-    return true;
-  },
-  getSubtitles: () => false,
-  getMotion: () => true,
-  showSettings: () => {},
-  setGameData: () => {},
-  getGameData: () => {},
-  getAllSettings: () => {
-    return { audio: true };
-  },
-};
