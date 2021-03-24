@@ -10,7 +10,7 @@ const model = {
 export class SettingsBaseBBC extends SettingsBase {
   constructor({ game }) {
     super({ game });
-    const gmisettings = __ENV__ === 'bbc' ? game.gmi.getAllSettings() : false;
+    const gmisettings = __ENVIRONMENT__ === 'bbc' ? game.gmi.getAllSettings() : false;
     this.game = game;
     this.model = gmisettings ?  { ...gmisettings } || {...model} : {...model};
     if (!gmisettings) {

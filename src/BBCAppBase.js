@@ -1,7 +1,7 @@
 import { AppBase, StorageGame } from '@jollywise/jollygoodgame';
 import { TrackingPlugin } from './bbc/plugins/TrackingPlugin';
 import { StoragePlugin } from './bbc/plugins/StoragePlugin';
-import { SettingsBaseBBC } from '@jollywise/jollygoodgame-bbc/src/bbc/settings/SettingsBaseBBC';
+import { SettingsBaseBBC } from './bbc/settings/SettingsBaseBBC';
 
 export default class BBCAppBase extends AppBase {
   constructor(opts) {
