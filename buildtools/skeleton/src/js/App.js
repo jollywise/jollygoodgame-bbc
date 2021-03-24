@@ -1,7 +1,7 @@
-import { AppBase } from '@jollywise/jollygoodgame';
+import { BBCAppBase } from '@jollywise/jollygoodgame-bbc';
 import GameController from 'game/controller/GameController';
 
-export default class App extends AppBase {
+export default class App extends BBCAppBase {
   constructor(opts) {
     super(opts);
 
