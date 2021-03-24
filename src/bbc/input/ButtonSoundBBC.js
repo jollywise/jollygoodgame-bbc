@@ -13,7 +13,11 @@ export class ButtonSoundBBC extends ButtonBBC {
     super(scene, { ...opts, costume: id + defaultState });
 
     this.updateDisplayStatus({ isMuted: !scene.game.settings.audio });
-    this.scene.game.settings.events.on(SETTINGS_EVENTS.AUDIO_CHANGED, this.handleAudioChanged, this);
+    this.scene.game.settings.events.on(
+      SETTINGS_EVENTS.AUDIO_CHANGED,
+      this.handleAudioChanged,
+      this
+    );
 
     // enable
     enabled && this.enable();
@@ -34,7 +38,11 @@ export class ButtonSoundBBC extends ButtonBBC {
 
   // clean up
   destroy(fromScene = true) {
-    this.scene.game.settings.off(SETTINGS_EVENTS.AUDIO_CHANGED, this.handleAudioChanged, this);
+    this.scene.game.settings.events.off(
+      SETTINGS_EVENTS.AUDIO_CHANGED,
+      this.handleAudioChanged,
+      this
+    );
     super.destroy(fromScene);
   }
 }
