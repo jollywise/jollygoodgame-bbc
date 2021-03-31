@@ -9,7 +9,6 @@ const PROJECT = {
   isVendorChunked: false,
   environmentVars: {
     debug: false,
-    debugBounds: false,
     watch: false,
     shortcuts: true,
     env: 'bbc',
