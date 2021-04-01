@@ -3,7 +3,7 @@ import { TrackingPlugin } from './bbc/plugins/TrackingPlugin';
 import { StoragePlugin } from './bbc/plugins/StoragePlugin';
 import { SettingsBaseBBC } from './bbc/settings/SettingsBaseBBC';
 
-export default class BBCAppBase extends AppBase {
+export class BBCAppBase extends AppBase {
   constructor(opts) {
     super(opts);
 
@@ -11,7 +11,7 @@ export default class BBCAppBase extends AppBase {
     this.gmi = opts.gmi;
 
     // settings
-    this._settings = new SettingsBaseBBC({game:this});
+    this._settings = new SettingsBaseBBC({ game: this });
 
     // BBC Saves
     const storage = new StorageGame('');
