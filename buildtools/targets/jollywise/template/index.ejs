@@ -229,7 +229,7 @@
           var globalSettings = {
             audio: true,
             subtitles: false,
-            motion: false,
+            motion: true,
           };
           var gameSettings = {};
           function areCookiesAllowed() {
@@ -247,7 +247,7 @@
               var defaults = {};
               defaults.audio = true;
               defaults.subtitles = false;
-              defaults.motion = false;
+              defaults.motion = true;
               return defaults;
             }
             function ensureGlobalSettingsAreBools() {
