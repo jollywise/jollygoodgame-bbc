@@ -2,7 +2,7 @@ import { Hud, SETTINGS_EVENTS } from '@jollywise/jollygoodgame';
 import { ButtonBBC } from './ButtonBBC';
 import { ButtonSoundBBC } from './ButtonSoundBBC';
 
-export default class HudBBC extends Hud {
+export class HudBBC extends Hud {
   constructor() {
     super({ key: 'Hud', active: true });
   }
