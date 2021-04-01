@@ -2,7 +2,7 @@ import { SETTINGS_EVENTS, SettingsBase } from '@jollywise/jollygoodgame';
 
 const model = {
   audio: true,
-  motion: true,
+  motion: false,
   subtitles: false,
 };
 

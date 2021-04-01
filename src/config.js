@@ -32,12 +32,12 @@ export const getConfigGMI = () => {
             title: 'Audio',
             description: 'Turn off/on sound and music',
           },
-          {
-            key: 'motion',
-            type: 'toggle',
-            title: 'Motion',
-            description: 'Turn off/on motion',
-          },
+          // {
+          //   key: 'motion',
+          //   type: 'toggle',
+          //   title: 'Motion',
+          //   description: 'Turn off/on motion',
+          // },
           {
             key: 'subtitles',
             type: 'toggle',
