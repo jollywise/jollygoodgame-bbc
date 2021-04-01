@@ -1,5 +1,4 @@
-import { getConfigBase } from '@jollywise/jollygoodgame';
-import { VibratePlugin, SubtitlesPlugin } from '@jollywise/jollygoodgame/src/plugins';
+import { getConfigBase, VibratePlugin, SubtitlesPlugin } from '@jollywise/jollygoodgame';
 
 export const getConfigBBC = (opts = {}) => {
   const conf = getConfigBase(opts);
