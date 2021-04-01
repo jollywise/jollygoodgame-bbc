@@ -1,7 +1,7 @@
 import { getConfigBase } from '@jollywise/jollygoodgame';
 import { VibratePlugin, SubtitlesPlugin } from '@jollywise/jollygoodgame/src/plugins';
 
-export const getConfigBBC = (opts) => {
+export const getConfigBBC = (opts = {}) => {
   const conf = getConfigBase(opts);
   conf.plugins.scene.push({
     key: 'VibratePlugin',
