@@ -15,7 +15,7 @@ export default class Load extends LoadBase {
   preload() {
     super.preload({ fonts: FONTS.APP });
     const assetPack = require('../../../assets/assetpack.json');
-    this.load.path = this.game.appUrls.resolveRelativeUrl('assets/');
+    this.load.setBaseURL(this.game.appUrls.resolveRelativeUrl('assets/'));
     this.load.addPack(assetPack, 'preload');
     this.load.addPack(assetPack, 'base_audio');
     this.load.addPack(assetPack, 'ui');
@@ -25,7 +25,7 @@ export default class Load extends LoadBase {
   create() {
     super.create();
     this.load.off('progress', this.loadScreen.setProgress, this.loadScreen);
-    this.game.controller.assetsLoaded();
+    this.game.assetsLoaded();
   }
 
   shutdown() {

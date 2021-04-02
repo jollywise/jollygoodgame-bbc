@@ -7,7 +7,7 @@ export default class Welcome extends SceneBase {
   create() {
     super.create();
     this.add
-      .text(840, 300, this.game.controller.copyModel.get('title_welcome'), {
+      .text(840, 300, this.game.copy.get('title_welcome'), {
         font: '64px sans-serif',
         color: '#ffffff',
       })

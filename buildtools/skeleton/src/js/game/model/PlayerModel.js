@@ -1,11 +1,9 @@
-const SERIALISE_KEYS = ['slotId'];
+const SERIALISE_KEYS = [];
 const MODEL_ID = 'player';
 
 export default class PlayerModel {
-  constructor(saves, id, { playerOptions }) {
+  constructor(saves, id) {
     this.saves = saves;
-    this.id = id;
-    this.slotId = playerOptions.slotId;
     this.load();
   }
 
@@ -13,8 +11,7 @@ export default class PlayerModel {
    * Save Methods
    */
   load() {
-    const data = this.saves.load();
-    this.saves.deserialize(this, data, MODEL_ID);
+    this.saves.deserialize(this, MODEL_ID);
     this.save();
   }
 
