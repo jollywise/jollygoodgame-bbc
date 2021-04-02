@@ -3,7 +3,7 @@
     "jgg:update": "jgg update"
   },
   "dependencies": {
-    "@jollywise/jollygoodgame": "git://github.com/jollywise/jollygoodgame.git#master",
-  	"@jollywise/jollygoodgame-bbc": "git://github.com/jollywise/jollygoodgame-bbc.git#master"
+    "@jollywise/jollygoodgame": "git://github.com/jollywise/jollygoodgame.git#2-0",
+    "@jollywise/jollygoodgame-bbc": "git://github.com/jollywise/jollygoodgame-bbc.git#2-0"
   }
 }
