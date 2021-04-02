@@ -1,104 +1,147 @@
-import { SETTINGS_EVENTS } from '@jollywise/jollygoodgame';
-import { SettingsPlugin } from '@jollywise/jollygoodgame/src/components';
+import { SETTINGS_EVENTS, SettingsBase } from '@jollywise/jollygoodgame';
 
-class SettingsPluginBBC extends SettingsPlugin {
-  get gmi() {
-    return this.game.gmi && this.game.gmi.getAllSettings ? this.game.gmi : false;
+const model = {
+  audio: true,
+  motion: true,
+  subtitles: false,
+};
+
+export class SettingsBaseBBC extends SettingsBase {
+  constructor({ game }) {
+    super({ game });
+    const gmisettings = __ENVIRONMENT__ === 'bbc' ? game.gmi.getAllSettings() : false;
+    this.game = game;
+    this.model = gmisettings ? { ...gmisettings } || { ...model } : { ...model };
+    if (!gmisettings) {
+      const stored = localStorage.getItem('jggsettings');
+      if (stored) {
+        this.model = { ...this.model, ...JSON.parse(stored) };
+      }
+    }
+    this.gmi = gmisettings ? game.gmi : false;
+  }
+
+  get plugin() {
+    console.log('plugin not suported via bbc base');
+  }
+  set plugin(value) {
+    value;
+    console.log('plugin not suported via bbc base');
+  }
+
+  get audio() {
+    return this.model.audio;
+  }
+
+  get sfx() {
+    return this.audio;
+  }
+
+  get music() {
+    return this.audio;
   }
 
   get vo() {
     return this.audio;
   }
-  set vo(value) {
-    this.audio = value;
-  }
-  get sfx() {
+
+  get buttonAudio() {
     return this.audio;
   }
+
+  get motion() {
+    return this.audio;
+  }
+
+  get captions() {
+    return this.model.subtitles || this.model.captions;
+  }
+
+  set audio(audio) {
+    this.changeSetting('audio', audio);
+    this.emit(SETTINGS_EVENTS.AUDIO_CHANGED);
+  }
+
   set sfx(value) {
-    this.audio = value;
+    value, console.log('sfx not supported in bbc base, call audio instead');
   }
-  get music() {
-    return this.audio;
-  }
+
   set music(value) {
-    this.audio = value;
+    value, console.log('music not supported in bbc base, call audio instead');
   }
 
-  getSettingValue(settingid) {
+  set vo(value) {
+    value, console.log('vo not supported in bbc base, call audio instead');
+  }
+
+  set buttonAudio(value) {
+    value, console.log('buttonAudio not supported in bbc base, call audio instead');
+  }
+
+  set motion(motion) {
+    this.changeSetting('motion', motion);
+  }
+
+  set captions(captions) {
+    this.changeSetting('subtitles', captions);
+  }
+
+  getSetting(key) {
     if (this.gmi) {
-      if (settingid === 'captions') settingid = 'subtitles';
-      return this.gmi.getAllSettings()[settingid];
-    } else {
-      return super.getSettingValue(settingid);
+      switch (key) {
+        case 'audio':
+        case 'motion':
+        case 'subtitles':
+          this.gmi.getAllSettings()[key];
+          break;
+        default:
+          return this.gmi.getAllSettings().gameData[key];
+      }
     }
+    return this.model[key];
   }
 
-  setSettingValue(settingid, value) {
+  changeSetting(key, value) {
+    this.model[key] = value;
     if (this.gmi) {
-      switch (settingid) {
+      switch (key) {
         case 'audio':
           this.gmi.setAudio(value);
           break;
         case 'motion':
           this.gmi.setMotion(value);
           break;
-        case 'captions':
+        case 'subtitles':
           this.gmi.setSubtitles(value);
           break;
         default:
-          this.gmi.setGameData(settingid, value);
+          this.gmi.setGameData(key, value);
           break;
       }
-      this._events.emit(SETTINGS_EVENTS.CHANGED, { setting: settingid, value });
-      this._saveSettings();
     } else {
-      super.setSettingValue(settingid, value);
+      localStorage.setItem('jggsettings', JSON.stringify(this.model));
     }
-  }
-
-  getAllSettings() {
-    if (this.gmi) {
-      return this.gmi.getAllSettings();
-    } else {
-      super.getAllSettings();
-    }
+    this.emit(SETTINGS_EVENTS.CHANGED, { key, value });
   }
 
   showSettings() {
     if (this.gmi) {
-      this.gmi.showSettings(this.onSettingChanged.bind(this), this.onSettingsClosed.bind(this));
-    } else {
-      super.showSettings();
+      return this.gmi.showSettings(
+        this.onSettingsChangedViaGMIMenu.bind(this),
+        this.onSettingsClosedViaGMIMenu.bind(this)
+      );
     }
   }
 
-  onSettingChanged(key, value) {
-    if (key === 'subtitles') key = 'captions';
-    if (this[key]) this[key] = value;
-  }
-
-  onSettingsClosed() {
-    this.events.emit(SETTINGS_EVENTS.CLOSED);
-  }
-
-  closeSettings() {
-    if (!this.gmi) {
-      super.closeSettings();
+  onSettingsChangedViaGMIMenu(key, value) {
+    this.model[key] = value;
+    this.emit(SETTINGS_EVENTS.CHANGED, { key, value });
+    if (key === 'audio') {
+      this.emit(SETTINGS_EVENTS.AUDIO_CHANGED, { key, value });
     }
   }
 
-  _saveSettings() {
-    if (!this.gmi) {
-      super._saveSettings();
-    }
-  }
-
-  _loadSettings() {
-    if (!this.gmi) {
-      super._loadSettings();
-    }
+  onSettingsClosedViaGMIMenu() {
+    super.onSettingsClosed();
   }
 }
-
-export { SettingsPluginBBC };

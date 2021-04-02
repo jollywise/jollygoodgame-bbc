@@ -1,7 +1,9 @@
 {
   "name": "@jollywise/jollygoodgame-bbc",
   "version": "1.0.0",
-  "description": "",
+  "description": "Base classes for Phaser development",
+  "author": "Jollywise <info@jollywise.co.uk>",
+  "license": "MIT",
   "main": "src/index.js",
   "types": "types/index.d.ts",
   "scripts": {
@@ -13,8 +15,6 @@
     "type": "git",
     "url": "git+https://github.com/jollywise/jollygoodgame-bbc.git"
   },
-  "author": "",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/jollywise/jollygoodgame-bbc/issues"
   },
@@ -35,19 +35,19 @@
     ]
   },
   "devDependencies": {
-    "@babel/core": "^7.13.10",
+    "@babel/core": "^7.13.14",
     "@babel/plugin-proposal-object-rest-spread": "^7.13.8",
     "@babel/plugin-transform-modules-commonjs": "^7.13.8",
     "@babel/plugin-transform-runtime": "^7.13.10",
     "@babel/preset-env": "^7.13.10",
     "audiosprite": "^0.7.1",
     "autoprefixer": "^9.1.0",
-    "aws-sdk": "^2.860.0",
+    "aws-sdk": "^2.876.0",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "^2.0.2",
     "copy-webpack-plugin": "^6.4.1",
-    "core-js": "^3.9.1",
+    "core-js": "^3.10.0",
     "cosmiconfig": "^7.0.0",
     "cross-env": "^5.2.0",
     "css-loader": "^2.1.1",
@@ -165,11 +165,10 @@
     },
     "globals": {
       "__DEBUG__": false,
-      "__DEBUG_BOUNDS__": false,
       "__WATCH__": false,
       "__SHORTCUTS_ENABLED__": false,
-      "__ENV_IS_BBC__": false,
       "__VERSION__": false,
+      "__ENVIRONMENT__": false,
       "Phaser": false
     }
   }

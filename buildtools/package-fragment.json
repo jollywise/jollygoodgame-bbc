@@ -1,22 +1,9 @@
 {
   "webpackBuild": {
     "title": "Project Title",
-    "gameId": "project-game-id"
+    "gameId": "game-id"
   },
   "scripts": {
-    "watch": "webpack-dev-server --config ./node_modules/@jollywise/jollygoodgame-bbc/buildtools/webpack.config.js --env.target=local --env.buildtype=watch --env.minimize=false",
-    "build:jollywise": "cross-env NODE_ENV=production webpack --config ./node_modules/@jollywise/jollygoodgame-bbc/buildtools/webpack.config.js --env.target=jollywise --env.buildtype=dist --env.minimize=true",
-    "dist:local": "cross-env NODE_ENV=production webpack --config ./node_modules/@jollywise/jollygoodgame-bbc/buildtools/webpack.config.js --env.target=jollywise --env.buildtype=dist --env.minimize=true",
-    "build:bbc": "cross-env NODE_ENV=production webpack --config ./node_modules/@jollywise/jollygoodgame-bbc/buildtools/webpack.config.js --env.target=bbc --env.buildtype=dist --env.minimize=true"
-  },
-  "eslintConfig": {
-    "globals": {
-      "__DEBUG__": false,
-      "__DEBUG_BOUNDS__": false,
-      "__WATCH__": false,
-      "__SHORTCUTS_ENABLED__": false,
-      "__ENV_IS_BBC__": false,
-      "Phaser": false
-    }
+    "build:bbc": "cross-env NODE_ENV=production webpack --config ./node_modules/@jollywise/jollygoodgame/buildtools/webpack.config.js --env.target=bbc --env.buildtype=dist --env.minimize=true"
   }
 }
