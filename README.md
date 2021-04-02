@@ -67,6 +67,7 @@ After installing the package your folder structure should look like below
     - App.js
     - game
       - constants
+        - HudConfig.js
         - Constants.js
         - AppFonts.js
         - SceneConstants.js
