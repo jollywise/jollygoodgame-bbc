@@ -1,9 +1,11 @@
 import { getConfigBase, GameHudPlugin } from '@jollywise/jollygoodgame';
+import { SavesPluginBBC } from '@jollywise/jollygoodgame-bbc/src/bbc/components/saves/SavesPluginBBC';
 import { SettingsPluginBBC } from '@jollywise/jollygoodgame-bbc/src/bbc/components/settings/SetiingsPluginBBC';
 import { TrackingPlugin } from '@jollywise/jollygoodgame-bbc/src/bbc/components/tracking/TrackingPlugin';
 
 const BBC_COMPONENTS = {
   hug: GameHudPlugin,
+  saves: SavesPluginBBC,
   tracking: TrackingPlugin,
   settings: SettingsPluginBBC,
 };
