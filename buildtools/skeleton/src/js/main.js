@@ -2,7 +2,7 @@ import './../scss/main.scss';
 import App from 'App';
 import Boot from 'game/scenes/Boot';
 import Load from 'game/scenes/Load';
-import { dOMReady } from '@jollywise/jollygoodgame';
+import { DomReady } from '@jollywise/jollygoodgame';
 import { bootstrapBBC, getConfigGMI, getConfigBBC } from '@jollywise/jollygoodgame-bbc';
 
 const gmi = window.getGMI({ settingsConfig: getConfigGMI() });
@@ -11,7 +11,7 @@ const config = getConfigBBC({ gmi });
 
 config.scene = [Boot, Load];
 
-dOMReady(() => {
+DomReady(() => {
   if (gmi) {
     bootstrapBBC({ gameDir: gmi.gameDir }).then((response) => {
       if (response.success) {
