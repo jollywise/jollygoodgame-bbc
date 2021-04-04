@@ -1,10 +1,26 @@
 {
   "boot": {
+    "path": "assets/",
     "files": [
       {
         "type": "xml",
         "key": "copy_xml",
         "url": "locale/copy.xml"
+      }
+    ]
+  },
+  "ui": {
+    "path": "assets/ui/spritesheets/",
+    "files": [
+      {
+        "type": "multiatlas",
+        "key": "buttons",
+        "atlasURL": "buttons.json"
+      },
+      {
+        "type": "multiatlas",
+        "key": "howtoplay",
+        "atlasURL": "howtoplay.json"
       }
     ]
   }

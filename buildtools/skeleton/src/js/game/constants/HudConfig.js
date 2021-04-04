@@ -1,102 +1,109 @@
-import { ButtonSoundBBC, ButtonBBC } from '@jollywise/jollygoodgame-bbc';
+import { ButtonSoundBBC, ButtonBBC, ButtonExitBBC } from '@jollywise/jollygoodgame-bbc';
 
 export default {
   defaultButton: ButtonBBC,
   modal: { colour: '0x000000', alpha: 0.8 },
-  howtoplay: [],
-  buttons: {
-    home: {
+  howtoplay: [
+    { image_key: 'howtoplay_panel_01', vo: { sprite: 'vo', id: 'howtoplay_1' } },
+    { image_key: 'howtoplay_panel_02', vo: { sprite: 'vo', id: 'howtoplay_2' } },
+    { image_key: 'howtoplay_panel_03', vo: { sprite: 'vo', id: 'howtoplay_3' } },
+    { image_key: 'howtoplay_panel_04', vo: { sprite: 'vo', id: 'howtoplay_4' } },
+    { image_key: 'howtoplay_panel_05', vo: { sprite: 'vo', id: 'howtoplay_6' } },
+  ],
+  buttons: [
+    {
       id: 'btn_home',
       costume: 'btn_home',
       buttongroup: 'topleft',
-      ariaLabel: 'home',
+      //  ariaLabel: 'home',
       gelvo: 'home',
       event: 'RETURN_HOME',
     },
-    pause: {
+    {
       id: 'btn_pause',
       costume: 'btn_pause',
       buttongroup: 'topright',
-      ariaLabel: 'pause',
+      //  ariaLabel: 'pause',
       gelvo: 'pause',
       event: 'PAUSE_GAME',
     },
-    howtoplay: {
+    {
       id: 'btn_howtoplay',
       costume: 'btn_howtoplay',
       buttongroup: 'bottomright',
-      ariaLabel: 'how to play',
+      //  ariaLabel: 'how to play',
       gelvo: 'how_to_play',
       event: 'SHOW_INSTRUCTIONS',
     },
-    howtoplay_back: {
-      id: 'btn_back',
+    {
+      id: 'btn_howtoplayback',
       costume: 'btn_back',
       buttongroup: 'topleft',
-      ariaLabel: 'back',
+      //  ariaLabel: 'back',
       gelvo: 'ui_back',
       event: 'CLOSE_INSTRUCTIONS',
     },
-    exit_game: {
+    {
       id: 'btn_exit',
       costume: 'btn_exit',
       buttongroup: 'topleft',
-      ariaLabel: 'exit',
+      //  ariaLabel: 'exit',
       gelvo: 'exit',
       event: 'EXIT_GAME',
+      buttonClass: ButtonExitBBC,
     },
-    settings: {
+    {
       id: 'btn_settings',
       costume: 'btn_settings',
       buttongroup: 'topright',
-      ariaLabel: 'settings',
+      //  ariaLabel: 'settings',
       gelvo: 'settings',
       event: 'SHOW_SETTINGS',
     },
-    sound: {
+    {
       id: 'btn_sound',
       costume: 'btn_sound',
       buttongroup: 'topright',
-      ariaLabel: 'toggle sound',
+      //  ariaLabel: 'toggle sound',
       event: 'TOGGLE_SOUND',
       buttonClass: ButtonSoundBBC,
     },
-    pause_resume: {
+    {
       id: 'btn_resume',
       costume: 'btn_play',
       buttongroup: 'center',
-      ariaLabel: 'resume',
+      //  ariaLabel: 'resume',
       gelvo: 'resume',
       event: 'RESUME_GAME',
     },
-    start_game: {
+    {
       id: 'btn_play',
       costume: 'btn_play',
       buttongroup: 'welcome',
-      ariaLabel: 'start game',
+      //  ariaLabel: 'start game',
       gelvo: 'play',
       event: 'START_GAME',
     },
-  },
+  ],
   states: {
     EMPTY: {
       modal: false,
       buttons: [],
     },
     WELCOME: {
-      buttons: ['exit_game', 'sound', 'settings', 'start_game', 'howtoplay'],
+      buttons: ['btn_exit', 'btn_sound', 'btn_settings', 'btn_play', 'btn_howtoplay'],
     },
     BASIC: {
       modal: false,
-      buttons: ['pause'],
+      buttons: ['btn_pause'],
     },
     PAUSE: {
       modal: true,
-      buttons: ['home', 'sound', 'settings', 'pause_resume', 'howtoplay'],
+      buttons: ['btn_home', 'btn_sound', 'btn_settings', 'btn_resume', 'btn_howtoplay'],
     },
     HOW_TO_PLAY: {
-      modal: false,
-      buttons: ['howtoplay_back'],
+      modal: true,
+      buttons: ['btn_howtoplayback'],
     },
   },
   buttongroups: {

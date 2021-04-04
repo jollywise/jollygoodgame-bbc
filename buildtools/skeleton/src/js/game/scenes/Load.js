@@ -2,6 +2,7 @@ import { LoadBase } from '@jollywise/jollygoodgame';
 import { KEYS } from 'game/constants/SceneConstants';
 import { FONTS } from 'game/constants/AppFonts';
 import LoadScreen from 'game/display/ui/loading/LoadScreen';
+import { ASSETPACK_KEYS } from '../constants/LoadConstants';
 
 export default class Load extends LoadBase {
   constructor() {
@@ -15,10 +16,8 @@ export default class Load extends LoadBase {
   preload() {
     super.preload({ fonts: FONTS.APP });
     const assetPack = require('../../../assets/assetpack.json');
-    this.load.setBaseURL(this.game.appUrls.resolveRelativeUrl('assets/'));
-    this.load.addPack(assetPack, 'preload');
-    this.load.addPack(assetPack, 'base_audio');
-    this.load.addPack(assetPack, 'ui');
+    this.load.setBaseURL(this.game.appUrls.getBaseDirectory());
+    ASSETPACK_KEYS.LOAD.forEach((key) => this.load.addPack(assetPack, key));
     this.load.on('progress', this.loadScreen.setProgress, this.loadScreen);
   }
 

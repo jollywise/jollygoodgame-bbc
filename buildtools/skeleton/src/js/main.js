@@ -5,23 +5,19 @@ import Load from 'game/scenes/Load';
 import { DomReady } from '@jollywise/jollygoodgame';
 import { bootstrapBBC, getConfigGMI, getConfigBBC } from '@jollywise/jollygoodgame-bbc';
 
-const gmi = window.getGMI({ settingsConfig: getConfigGMI() });
+const gmi = window.getGMI ? window.getGMI({ settingsConfig: getConfigGMI() }) : false;
 const paths = { base: gmi.gameDir || './', assets: 'assets/' };
 const config = getConfigBBC({ gmi });
 
 config.scene = [Boot, Load];
 
 DomReady(() => {
-  if (gmi) {
-    bootstrapBBC({ gameDir: gmi.gameDir }).then((response) => {
-      if (response.success) {
-        gmi && gmi.gameLoaded();
-        new App({ gmi, config, paths });
-      } else {
-        console.error('Bootstrap failed');
-      }
-    });
-  } else {
-    console.error('GMI not available');
-  }
+  bootstrapBBC({ gameDir: gmi.gameDir }).then((response) => {
+    if (response.success) {
+      gmi && gmi.gameLoaded();
+      new App({ gmi, config, paths });
+    } else {
+      console.error('Bootstrap failed');
+    }
+  });
 });
