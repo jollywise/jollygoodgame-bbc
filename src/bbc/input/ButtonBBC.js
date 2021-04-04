@@ -53,17 +53,17 @@ export class ButtonBBC extends ButtonSimple {
   enterButtonHoverState() {
     if (this.buttonEnabled) {
       super.enterButtonHoverState();
-      this.scale = this.getData('targetscale') + 0.2;
+      // this.scale = this.getData('targetscale') + 0.2;
     }
   }
 
   enterButtonRestState() {
-    this.scale = this.getData('targetscale');
+    // this.scale = this.getData('targetscale');
     this.setFrame(this.costume);
   }
 
   enterButtonActiveState() {
     super.enterButtonActiveState();
-    this.scale = this.getData('targetscale') + 0.2;
+    // this.scale = this.getData('targetscale') + 0.2;
   }
 }

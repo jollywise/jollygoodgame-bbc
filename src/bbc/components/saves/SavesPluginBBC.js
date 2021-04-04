@@ -17,7 +17,7 @@ export class SavesPluginBBC extends SavesPlugin {
     this.gmi.setGameData(this.storageId, JSON.stringify({}));
   }
   saveToStorage(data) {
-    if (!this.gmi) super.saveToStorage(data);
+    if (!this.gmi) return super.saveToStorage(data);
     const savesString = JSON.stringify(data);
     this.gmi.setGameData(this.storageId, savesString);
   }
