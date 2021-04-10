@@ -23,8 +23,8 @@ Setting up a basic app from scratch is a simple as creating an empty folder and 
     "postinstall": "jgg createproject"
   },
   "dependencies": {
-    "@jollywise/jollygoodgame": "git://github.com/jollywise/jollygoodgame.git#2-0",
-    "@jollywise/jollygoodgame-bbc": "git://github.com/jollywise/jollygoodgame-bbc.git#2-0"
+    "@jollywise/jollygoodgame": "git://github.com/jollywise/jollygoodgame.git#2.x",
+    "@jollywise/jollygoodgame-bbc": "git://github.com/jollywise/jollygoodgame-bbc.git#2.x"
   }
 }
 </pre>
