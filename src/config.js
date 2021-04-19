@@ -4,7 +4,7 @@ import { SettingsPluginBBC } from '@jollywise/jollygoodgame-bbc/src/bbc/componen
 import { TrackingPlugin } from '@jollywise/jollygoodgame-bbc/src/bbc/components/tracking/TrackingPlugin';
 
 const BBC_COMPONENTS = {
-  hug: GameHudPlugin,
+  hud: GameHudPlugin,
   saves: SavesPluginBBC,
   tracking: TrackingPlugin,
   settings: SettingsPluginBBC,
