@@ -72,7 +72,8 @@ export class HudBBC extends Hud {
     }
 
     const group = this.getButtonGroup('topright');
-    let width = group ? group.groupwidth + 40 : 0;
+    let width = group ? group.groupwidth + 20 : 0;
+    let height = group ? group.groupheight : 0;
     this.settingsIcons.forEach((icon) => {
       const { hide_if_button, hide_if_setting } = icon.getData('config');
       if (hide_if_button) {
@@ -91,7 +92,7 @@ export class HudBBC extends Hud {
       }
 
       icon.visible = true;
-      icon.y = this.game.viewportController.topPadded + 25;
+      icon.y = this.game.viewportController.topPadded + height * 0.5;
       icon.x = this.game.viewportController.rightPadded - width - icon.displayWidth;
       width += icon.displayWidth + 20;
     });
