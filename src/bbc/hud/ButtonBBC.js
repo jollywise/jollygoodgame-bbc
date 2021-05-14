@@ -4,9 +4,7 @@ export class ButtonBBC extends ButtonSimple {
   constructor(scene, opts) {
     super(scene, opts);
 
-    const {
-      enabled = true,
-    } = opts;
+    const { enabled = true } = opts;
 
     this.calculateSize();
 
@@ -53,17 +51,18 @@ export class ButtonBBC extends ButtonSimple {
   enterButtonHoverState() {
     if (this.buttonEnabled) {
       super.enterButtonHoverState();
-      this.scale = this.getData('targetscale') + 0.2;
+      if (!this.scene.game.accessibilityEnabled) this.scale = this.getData('targetscale') + 0.2;
     }
   }
 
   enterButtonRestState() {
-    this.scale = this.getData('targetscale');
+    if (!this.scene.game.accessibilityEnabled) this.scale = this.getData('targetscale');
     this.setFrame(this.costume);
   }
 
   enterButtonActiveState() {
     super.enterButtonActiveState();
-    this.scale = this.getData('targetscale') + 0.2;
+
+    if (!this.scene.game.accessibilityEnabled) this.scale = this.getData('targetscale') + 0.2;
   }
 }
