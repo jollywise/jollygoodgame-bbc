@@ -50,4 +50,41 @@ module.exports = {
   ],
   devtool: process.env.NODE_ENV === 'development' ? 'none' : 'source-map',
   plugins: [],
+  module: {
+    rules: [
+      {
+        // using babel-preset-env : https://github.com/babel/babel-preset-env
+        test: /\.js?$/,
+        include: [/src/, /node_modules\/@jollywise/],
+        use: {
+          loader: 'babel-loader',
+          options: {
+            cacheDirectory: false,
+            presets: [
+              [
+                '@babel/preset-env',
+                {
+                  targets: {
+                    esmodules: true,
+                    ie: '11',
+                  },
+                  exclude: [],
+                  debug: false,
+                  corejs: '3',
+                  useBuiltIns: 'usage',
+                  modules: false,
+                  loose: true,
+                },
+              ],
+            ],
+            plugins: [
+              '@babel/plugin-proposal-object-rest-spread',
+              '@babel/plugin-transform-runtime',
+              '@babel/plugin-transform-modules-commonjs',
+            ],
+          },
+        },
+      },
+    ],
+  },
 };
